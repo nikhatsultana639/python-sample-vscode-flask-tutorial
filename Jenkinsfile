@@ -7,7 +7,7 @@ stage('clone from git')
 {
 steps
 {
-git branch: 'main', url: 'https://github.com/nikhatsultana639/python-sample-vscode-flask-tutorial.git'
+git branch: 'master', url: 'https://github.com/nikhatsultana639/python-sample-vscode-flask-tutorial.git'
 }
 }
 stage('installing dependencies')

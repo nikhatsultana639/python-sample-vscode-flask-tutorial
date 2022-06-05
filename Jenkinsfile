@@ -28,20 +28,6 @@ steps
 sh "pytest"
 }
 }
-stage('SonarQube Analysis') 
-{
-steps
-{
-def scannerHome = tool 'SonarScanner';
-}
-steps
-{
-withSonarQubeEnv('sonarQube') 
-{
-sh "${scannerHome}/bin/sonar-scanner"
-}
-}
-}
 stage('test wtih flake')
 {
 steps

@@ -26,7 +26,7 @@ stage('test')
 steps
 {
 sh "pytest"
-sh "pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml"
+sh '/home/jenkins/.local/bin/pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml'
  }
  }
  stage('test wtih flake')

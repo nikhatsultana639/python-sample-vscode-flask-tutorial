@@ -19,7 +19,6 @@ sh "pip install pytest"
 sh "python3 -m pip install --upgrade pip setuptools wheel"
 sh "pip install -r requirements.txt"
 sh "pip install pytest-cov"
-sh "pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml"
 }
 }
 stage('test')
@@ -27,6 +26,7 @@ stage('test')
 steps
 {
 sh "pytest"
+sh "pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml"
  }
  }
  stage('test wtih flake')

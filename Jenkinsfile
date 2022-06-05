@@ -28,11 +28,16 @@ steps
 sh "pytest"
 }
 }
-stage('SonarQube Analysis') {
+stage('SonarQube Analysis') 
+{
 steps
 {
 def scannerHome = tool 'SonarScanner';
-withSonarQubeEnv() {
+}
+steps
+{
+withSonarQubeEnv('sonarQube') 
+{
 sh "${scannerHome}/bin/sonar-scanner"
 }
 }

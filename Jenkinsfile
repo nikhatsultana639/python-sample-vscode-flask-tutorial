@@ -26,15 +26,25 @@ stage('test')
 steps
 {
 sh "pytest"
-sh '/home/jenkins/.local/bin/pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml'
- }
- }
- stage('test wtih flake')
- {
- steps
- {
- sh "flake8 ."
- }
- }  
- }
- }
+}
+}
+node {
+stage('SCM') {
+checkout scm
+}
+stage('SonarQube Analysis') {
+def scannerHome = tool 'SonarScanner';
+withSonarQubeEnv() {
+sh "${scannerHome}/bin/sonar-scanner"
+}
+}
+}
+stage('test wtih flake')
+{
+steps
+{
+sh "flake8 ."
+}
+}  
+}
+}
